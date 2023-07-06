@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Search from './components/Search'
 import DefinitionNotFound from './components/DefinitionNotFound'
+import Definition from './components/Definition'
+
+import response from './fixtures/dictionary_api_response.json'
 
 enum Theme {
   Light = 'light',
@@ -16,7 +19,7 @@ enum View {
 
 function App() {
   const [theme, setTheme] = useState<Theme>(Theme.Light)
-  const [view, setView] = useState<View>(View.Default)
+  const [view, setView] = useState<View>(View.ShowDefinition)
 
   function toggleTheme() {
     setTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)
@@ -32,6 +35,7 @@ function App() {
       <Header toggleTheme={toggleTheme} />
       <Search />
       {view === View.DefinitionNotFound && <DefinitionNotFound />}
+      {view === View.ShowDefinition && <Definition definition={response[0]} />}
     </div>
   )
 }
