@@ -1,24 +1,3 @@
-:root {
-  --body-bg-color: #{$white};
-  --text-color-primary: #{$grey-500};
-  --text-color-secondary: #{$grey-300};
-  --font: #{$font-sans-serif};
-}
-
-body[data-theme='dark'] {
-  --body-bg-color: #{$black};
-  --text-color-primary: #{$white};
-  --text-color-secondary: #{$grey-300};
-}
-
-body[data-font='serif'] {
-  --font: #{$font-serif};
-}
-
-body[data-font='mono'] {
-  --font: #{$font-mono};
-}
-
 body {
   background-color: var(--body-bg-color);
   color: var(--text-color-primary);
