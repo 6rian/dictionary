@@ -1,17 +1,24 @@
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Search from './components/Search'
+import DefinitionNotFound from './components/DefinitionNotFound'
 
 enum Theme {
   Light = 'light',
   Dark = 'dark',
 }
 
+enum View {
+  Default,
+  DefinitionNotFound,
+  ShowDefinition,
+}
+
 function App() {
   const [theme, setTheme] = useState<Theme>(Theme.Light)
+  const [view, setView] = useState<View>(View.Default)
 
   function toggleTheme() {
-    console.log('toggle', theme)
     setTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)
   }
 
@@ -24,10 +31,7 @@ function App() {
     <div className="container">
       <Header toggleTheme={toggleTheme} />
       <Search />
-      <p>main area</p>
-      <p>😕</p>
-      <h2>No Definitions Found</h2>
-      <p>Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead.</p>
+      {view === View.DefinitionNotFound && <DefinitionNotFound />}
     </div>
   )
 }
