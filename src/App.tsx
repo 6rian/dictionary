@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
+import Search from './components/Search'
 
 enum Theme {
   Light = 'light',
@@ -22,7 +23,7 @@ function App() {
   return (
     <div className="container">
       <Header toggleTheme={toggleTheme} />
-      <p>search</p>
+      <Search />
       <p>main area</p>
       <p>😕</p>
       <h2>No Definitions Found</h2>

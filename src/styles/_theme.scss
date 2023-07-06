@@ -3,12 +3,19 @@
   --text-color-primary: #{$grey-500};
   --text-color-secondary: #{$grey-300};
   --font: #{$font-sans-serif};
+
+  --input-bg-color: #{$grey-100};
+  --input-text-color: #{$grey-500};
+  --error-color: #{$red};
 }
 
 body[data-theme='dark'] {
   --body-bg-color: #{$black};
   --text-color-primary: #{$white};
   --text-color-secondary: #{$grey-300};
+
+  --input-bg-color: #{$grey-600};
+  --input-text-color: #{$white};
 }
 
 body[data-font='serif'] {
