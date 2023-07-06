@@ -1,15 +1,32 @@
+@mixin screen-md() {
+  @media (min-width: $bp-md) {
+    @content;
+  }
+}
+
+@mixin screen-lg() {
+  @media (min-width: $bp-lg) {
+    @content;
+  }
+}
+
 .container {
   width: 100%;
   max-width: 736px;
-  margin: 0 auto;
+  margin: 1.5rem auto;
   padding: 0 1.5rem;
 
-  @media (min-width: $bp-md) {
-    padding: 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @include screen-md() {
+    padding: 2.5rem 2.5rem;
+    gap: 2.5rem;
   }
 
-  @media (min-width: $bp-lg) {
-    padding: 0 4rem;
+  @include screen-lg() {
+    padding: 2.5rem 4rem;
   }
 }
 

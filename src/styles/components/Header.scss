@@ -1,0 +1,19 @@
+.Header {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+
+  &__logo {
+    width: 1.75rem;
+    height: 2rem;
+
+    @include screen-md() {
+      width: 2rem;
+      height: 2.28rem;
+    }
+  }
+
+  &__settings {
+    margin-left: auto;
+  }
+}
