@@ -1,10 +1,27 @@
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 
+enum Theme {
+  Light = 'light',
+  Dark = 'dark',
+}
+
 function App() {
+  const [theme, setTheme] = useState<Theme>(Theme.Light)
+
+  function toggleTheme() {
+    console.log('toggle', theme)
+    setTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)
+  }
+
+  useEffect(() => {
+    const body = document.querySelector('body') as HTMLElement
+    body.dataset.theme = theme
+  }, [theme])
 
   return (
     <div className="container">
-      <Header />
+      <Header toggleTheme={toggleTheme} />
       <p>search</p>
       <p>main area</p>
       <p>😕</p>
