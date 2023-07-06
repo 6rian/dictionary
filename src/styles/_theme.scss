@@ -7,6 +7,8 @@
   --input-bg-color: #{$grey-100};
   --input-text-color: #{$grey-500};
   --error-color: #{$red};
+
+  --ruler-color: #{$grey-200};
 }
 
 body[data-theme='dark'] {
@@ -16,6 +18,8 @@ body[data-theme='dark'] {
 
   --input-bg-color: #{$grey-600};
   --input-text-color: #{$white};
+
+  --ruler-color: #{$grey-400};
 }
 
 body[data-font='serif'] {

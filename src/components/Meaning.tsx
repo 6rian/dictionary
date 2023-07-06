@@ -6,11 +6,13 @@ function Meaning(props: MeaningProps) {
   const definitionsItems = definitions.map((d) => <li key={d.definition}>{d.definition}</li>)
 
   return (
-    <>
-      <h2 className="Meaning__pos">{partOfSpeech}</h2>
+    <div className="Meaning">
+      <div className="Meaning__heading">
+        <h2>{partOfSpeech}</h2>
+      </div>
       <h3>Meaning</h3>
       <ul>{definitionsItems}</ul>
-    </>
+    </div>
   )
 }
 
