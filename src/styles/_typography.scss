@@ -1,0 +1,53 @@
+@mixin heading-text($size) {
+  font-style: normal;
+  line-height: normal;
+
+  @if $size == "lg" {
+    font-size: 4rem;
+    font-weight: 700;
+  }
+  @else if $size == "md" {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+  @else {
+    font-size: 1.125rem;
+    font-weight: 400;
+  }
+}
+
+@mixin body-text($size) {
+  font-weight: 400;
+  font-style: normal;
+
+  @if $size == "md" {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+  @else {
+    font-size: 0.875rem;
+    line-height: normal;
+  }
+}
+
+h1 {
+  @include heading-text("lg");
+}
+
+h2 {
+  @include heading-text("md");
+}
+
+h3,
+h4,
+h5,
+h6 {
+  @include heading-text("sm");
+}
+
+p,
+li {
+  @include body-text("md");
+}
+
+

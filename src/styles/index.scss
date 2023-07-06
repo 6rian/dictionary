@@ -1,5 +1,5 @@
-$color: red;
+@import './variables';
+@import './typography';
 
-h1 {
-  color: $color;
-}
+@import './base';
+
