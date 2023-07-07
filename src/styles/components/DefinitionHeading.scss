@@ -1,0 +1,32 @@
+.DefinitionHeading {
+  margin-bottom: 1.75rem;
+
+  display: grid;
+  grid-template-columns: 1fr 3rem; 
+  row-gap: 0.5rem;
+
+  &__word {
+    font-size: 2rem;
+    font-weight: 700;
+
+    @include screen-md {
+      @include heading-text('lg');
+      font-weight: 700;
+    }
+  }
+
+  &__phoenetic {
+    @include body-text('md');
+    grid-row-start: 2;
+    color: $purple-100;
+
+    @include screen-md {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__play {
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+}
