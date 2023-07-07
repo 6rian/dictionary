@@ -2,6 +2,7 @@
   --body-bg-color: #{$white};
   --text-color-primary: #{$grey-500};
   --text-color-secondary: #{$grey-300};
+  --text-color-med-grey: #{$grey-300};
   --font: #{$font-sans-serif};
 
   --input-bg-color: #{$grey-100};
@@ -14,7 +15,7 @@
 body[data-theme='dark'] {
   --body-bg-color: #{$black};
   --text-color-primary: #{$white};
-  --text-color-secondary: #{$grey-300};
+  --text-color-secondary: white;
 
   --input-bg-color: #{$grey-600};
   --input-text-color: #{$white};

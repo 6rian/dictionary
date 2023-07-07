@@ -7,7 +7,7 @@ function Definition({ definition }: { definition: DictionaryResult }) {
 
   return (
     <article className="Definintion">
-      <h1>{definition.word}</h1>
+      <h1 className="Definition__word">{definition.word}</h1>
       {meanings}
       {sources && (
         <>

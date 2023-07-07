@@ -1,0 +1,11 @@
+.Definition {
+  &__word {
+    font-size: 2rem;
+    font-weight: 700;
+
+    @include screen-md {
+      @include heading-text('lg');
+      font-weight: 700;
+    }
+  }
+}
