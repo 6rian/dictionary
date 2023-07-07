@@ -11,6 +11,12 @@ enum Theme {
   Dark = 'dark',
 }
 
+export enum Font {
+  SansSerif = 'sans-serif',
+  Serif = 'serif',
+  Mono = 'mono',
+}
+
 enum View {
   Default,
   DefinitionNotFound,
@@ -19,6 +25,7 @@ enum View {
 
 function App() {
   const [theme, setTheme] = useState<Theme>(Theme.Light)
+  const [font, setFont] = useState<Font>(Font.SansSerif)
   const [view, setView] = useState<View>(View.ShowDefinition)
 
   function toggleTheme() {
@@ -30,9 +37,17 @@ function App() {
     body.dataset.theme = theme
   }, [theme])
 
+  useEffect(() => {
+    const body = document.querySelector('body') as HTMLElement
+    body.dataset.font = font
+  })
+
   return (
     <div className="container">
-      <Header toggleTheme={toggleTheme} />
+      <Header
+        toggleTheme={toggleTheme}
+        setFont={(font: Font) => setFont(font)}
+      />
       <Search />
       {view === View.DefinitionNotFound && <DefinitionNotFound />}
       {view === View.ShowDefinition && <Definition definition={response[0]} />}
