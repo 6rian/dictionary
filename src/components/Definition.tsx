@@ -1,6 +1,7 @@
 import { DictionaryResult, Phonetic } from '../api/dictionary'
 import DefinitionHeading from './DefinitionHeading'
 import Meaning from './Meaning'
+import Sources from './Sources'
 
 function findPhoeneticWithAudio(phoenetics: Phonetic[]): Phonetic {
   const p = phoenetics.find(ph => ph.audio !== '')
@@ -9,7 +10,6 @@ function findPhoeneticWithAudio(phoenetics: Phonetic[]): Phonetic {
 
 function Definition({ definition }: { definition: DictionaryResult }) {
   const meanings = definition.meanings.map((m, i) => <Meaning key={i} {...m} />)
-  const sources = definition.sourceUrls.map(url => <li key={url}><a href={url} target="_blank" rel="nofollow">{url}</a></li>)
 
   //TEMP
   console.log(definition)
@@ -21,14 +21,7 @@ function Definition({ definition }: { definition: DictionaryResult }) {
         phoenetic={findPhoeneticWithAudio(definition.phonetics)}
       />
       {meanings}
-      {sources && (
-        <>
-          <hr />
-          <p>Source</p>
-          <ul>{sources}</ul>
-        </>
-      )}
-
+      {definition.sourceUrls.length && <Sources urls={definition.sourceUrls} />}
     </article>
   )
 }
