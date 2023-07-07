@@ -1,8 +1,11 @@
 import { MouseEventHandler } from 'react'
-import { Font } from '../App'
+import { Font, Theme } from '../App'
 import logo from '../assets/book_logo.svg'
+import toggleOff from '../assets/dark_mode_off.svg'
+import toggleOn from '../assets/dark_mode_on.svg'
 
-function Header({ toggleTheme, setFont }: {
+function Header({ theme, toggleTheme, setFont }: {
+  theme: Theme
   toggleTheme: MouseEventHandler
   setFont: (font: Font) => void
 }) {
@@ -15,7 +18,11 @@ function Header({ toggleTheme, setFont }: {
           <option value={Font.Serif}>Serif</option>
           <option value={Font.Mono}>Mono</option>
         </select>
-        <button onClick={toggleTheme}>Theme</button>
+        <img
+          src={theme === Theme.Light ? toggleOff : toggleOn}
+          onClick={toggleTheme}
+          className="Header__toggle"
+        />
       </div>
     </header>
   )

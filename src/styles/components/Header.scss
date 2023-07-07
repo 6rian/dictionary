@@ -15,5 +15,15 @@
 
   &__settings {
     margin-left: auto;
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__toggle {
+    width: 5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

@@ -8,7 +8,7 @@ import type { DictionaryResult } from './api/dictionary'
 
 import response from './fixtures/dictionary_api_response.json'
 
-enum Theme {
+export enum Theme {
   Light = 'light',
   Dark = 'dark',
 }
@@ -61,6 +61,7 @@ function App() {
   return (
     <div className="container">
       <Header
+        theme={theme}
         toggleTheme={toggleTheme}
         setFont={(font: Font) => setFont(font)}
       />
