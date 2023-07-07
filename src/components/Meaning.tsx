@@ -1,4 +1,4 @@
-import { Meaning as MeaningProps } from "../api/dictionary"
+import type { Meaning as MeaningProps } from '../api/dictionary'
 
 function Meaning(props: MeaningProps) {
   const { partOfSpeech, definitions } = props

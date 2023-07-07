@@ -32,3 +32,26 @@ export interface Phonetic {
   sourceUrl?: string;
   license?: License;
 }
+
+export class NotFoundError extends Error {
+  constructor(message: string) {
+    super(message)
+    Object.setPrototypeOf(this, NotFoundError.prototype)
+  }
+}
+
+async function getWord(word: string): Promise<DictionaryResult> {
+  const resp = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+
+  if (resp.status === 404) {
+    throw new NotFoundError(`Word not found: ${word}`)
+  }
+
+  const data: DictionaryResult[] = await resp.json()
+  return data[0]
+}
+
+export default {
+  getWord,
+  NotFoundError
+}
