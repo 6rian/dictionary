@@ -28,5 +28,9 @@
   &__play {
     grid-row-start: 1;
     grid-row-end: 3;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
