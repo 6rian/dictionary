@@ -6,3 +6,17 @@ body {
   padding: 0;
 }
 
+a {
+  color: var(--text-color-primary);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+hr {
+  border-color: var(--ruler-color);
+  margin: 2rem 0 1.5rem;
+}
+
