@@ -54,6 +54,22 @@
         width: 1rem;
         margin-left: -1rem;
       }
+
+      & > p {
+        font-size: inherit;
+        font-family: inherit;
+        line-height: inherit;
+        margin-top: 1rem;
+        color: var(--text-color-med-grey);
+
+        &::before {
+          content: '\201C';
+        }
+
+        &::after {
+          content: '\201D';
+        }
+      }
     }
   }
 

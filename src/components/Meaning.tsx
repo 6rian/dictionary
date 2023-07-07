@@ -3,7 +3,12 @@ import { Meaning as MeaningProps } from "../api/dictionary"
 function Meaning(props: MeaningProps) {
   const { partOfSpeech, definitions } = props
 
-  const definitionsItems = definitions.map((d) => <li key={d.definition}>{d.definition}</li>)
+  const definitionsItems = definitions.map((d) => (
+    <li key={d.definition}>
+      {d.definition}
+      {d.example && <p>{d.example}</p>}
+    </li>
+  ))
 
   return (
     <div className="Meaning">
