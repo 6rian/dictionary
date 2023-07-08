@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
+  align-items: center;
 
   &__logo {
     width: 1.75rem;
@@ -25,5 +26,78 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &__font-selector {
+    position: relative;
+    cursor: pointer;
+
+    summary,
+    li {
+      font-weight: bold;
+      font-size: 0.875rem;
+
+      @include screen-md {
+        font-size: 1.125rem;
+      }
+    }
+
+    summary {
+      &::marker,
+      &::-webkit-details-marker {
+        display: none;
+        content: '';
+      }
+
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+
+      img {
+        width: 12px;
+        height: 6px;
+      }
+    }
+    
+    &__dropdown-wrapper {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+
+      [open] & {
+        display: block;
+      }
+    }
+
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background-color: var(--dropdown-bg-color);
+      width: 185px;
+      padding: 1.5rem;
+      margin-top: 5px;
+      border-radius: 1rem;
+      box-shadow: 0px 5px 30px 0px var(--dropdown-shadow-color);
+      list-style: none;
+    }
+
+    li:hover {
+      color: $purple-100; 
+    }
+
+    $fonts: "sans-serif", "serif", "mono";
+    @each $font in $fonts {
+      li[data-font="#{$font}"] {
+        font-family: var(--font-#{$font});
+      }
+    }
+  }
+
+  &__verticalRuler {
+    background: $grey-200;
+    width: 1px;
   }
 }

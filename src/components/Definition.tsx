@@ -11,9 +11,6 @@ function findPhoeneticWithAudio(phoenetics: Phonetic[]): Phonetic {
 function Definition({ definition }: { definition: DictionaryResult }) {
   const meanings = definition.meanings.map((m, i) => <Meaning key={i} {...m} />)
 
-  //TEMP
-  console.log(definition)
-
   return (
     <article className="Definintion">
       <DefinitionHeading
