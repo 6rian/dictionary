@@ -25,6 +25,8 @@ enum View {
   ShowDefinition,
 }
 
+export type SearchFn = (query: string) => void
+
 function App() {
   const [theme, setTheme] = useState<Theme>(Theme.Light)
   const [font, setFont] = useState<Font>(Font.SansSerif)
@@ -67,7 +69,7 @@ function App() {
       />
       <Search search={search} />
       {view === View.DefinitionNotFound && <DefinitionNotFound />}
-      {view === View.ShowDefinition && <Definition definition={word} />}
+      {view === View.ShowDefinition && <Definition definition={word} updateSearch={search} />}
     </div>
   )
 }

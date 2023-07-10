@@ -33,7 +33,7 @@
     margin-bottom: 1.5rem;
   }
 
-  ul {
+  > ul {
     padding-left: 1rem;
     margin-bottom: 1.5rem;
     list-style: none;
@@ -75,4 +75,33 @@
     }
   }
 
+  &__synonyms {
+    display: flex;
+    gap: 1rem;
+
+    > span {
+      @include heading-text('sm');
+      color: var(--text-color-med-grey);
+    }
+
+    > ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+      gap: 0.5rem;
+    }
+
+    button {
+      border: none;
+      background-color: transparent;
+      color: $purple-100;
+      font-size: 1rem;
+      font-weight: bold;
+
+      @include  screen-md {
+        font-size: 1.25rem;
+      }
+    }
+  }
 }

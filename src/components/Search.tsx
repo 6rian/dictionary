@@ -1,8 +1,9 @@
 import { ChangeEvent, FormEvent, useState, useRef } from 'react'
 import searchIcon from '../assets/search.svg'
+import { SearchFn } from '../App'
 
 type SearchProps = {
-  search: Function
+  search: SearchFn
 }
 
 function Search({ search }: SearchProps) {
@@ -18,7 +19,7 @@ function Search({ search }: SearchProps) {
       setError('')
     }
 
-    search(searchRef.current?.value.trim())
+    search(searchRef.current?.value.trim() || '')
   }
 
   function resetFieldError(e: ChangeEvent<HTMLInputElement>) {
