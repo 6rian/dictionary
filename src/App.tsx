@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import Search from './components/Search'
 import DefinitionNotFound from './components/DefinitionNotFound'
 import Definition from './components/Definition'
@@ -61,15 +62,18 @@ function App() {
   })
 
   return (
-    <div className="container">
-      <Header
-        theme={theme}
-        toggleTheme={toggleTheme}
-        setFont={(font: Font) => setFont(font)}
-      />
-      <Search search={search} />
-      {view === View.DefinitionNotFound && <DefinitionNotFound />}
-      {view === View.ShowDefinition && <Definition definition={word} updateSearch={search} />}
+    <div className="App">
+      <div className="container">
+        <Header
+          theme={theme}
+          toggleTheme={toggleTheme}
+          setFont={(font: Font) => setFont(font)}
+        />
+        <Search search={search} />
+        {view === View.DefinitionNotFound && <DefinitionNotFound />}
+        {view === View.ShowDefinition && <Definition definition={word} updateSearch={search} />}
+      </div>
+      <Footer />
     </div>
   )
 }

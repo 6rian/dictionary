@@ -17,6 +17,8 @@
   --dropdown-shadow-color: rgba(0, 0, 0, 0.10);
 
   --ruler-color: #{$grey-200};
+
+  --footer-bg-color: #{$grey-100};
 }
 
 body[data-theme='dark'] {
@@ -31,6 +33,8 @@ body[data-theme='dark'] {
   --dropdown-shadow-color: #{$purple-100};
 
   --ruler-color: #{$grey-400};
+
+  --footer-bg-color: #{$grey-600};
 }
 
 body[data-font='serif'] {

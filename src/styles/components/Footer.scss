@@ -1,0 +1,31 @@
+.Footer {
+  background-color: var(--footer-bg-color);
+  text-align: center;
+  padding: 2rem;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+
+    @include screen-md {
+      gap: 1rem;
+    }
+  }
+
+  li {
+    @include body-text('sm');
+
+    @include screen-md {
+      @include body-text('md');
+    }
+  }
+
+  a {
+    color: $purple-100;
+    text-decoration: underline;
+  }
+}

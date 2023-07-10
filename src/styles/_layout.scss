@@ -10,6 +10,13 @@
   }
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
 .container {
   width: 100%;
   max-width: 736px;
