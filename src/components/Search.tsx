@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useState, useRef } from 'react'
+import searchIcon from '../assets/search.svg'
 
 type SearchProps = {
   search: Function
@@ -28,15 +29,18 @@ function Search({ search }: SearchProps) {
 
   return (
     <form className="Search" onSubmit={handleSubmit}>
-      <input
-        type="search"
-        name="search"
-        id="search"
-        placeholder="Search for any word..."
-        ref={searchRef}
-        onChange={resetFieldError}
-        className={error ? `error` : ``}
-      />
+      <div className="Search__wrapper">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search for any word..."
+          ref={searchRef}
+          onChange={resetFieldError}
+          className={error ? `error` : ``}
+        />
+        <img src={searchIcon} className="Search__icon" alt="Search icon" />
+      </div>
       {error && <p className="error">{error}</p>}
     </form>
   )

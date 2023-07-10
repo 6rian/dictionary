@@ -1,4 +1,18 @@
 .Search {
   display: flex;
   flex-direction: column;
+
+  input {
+    width: 100%;
+  }
+
+  &__icon {
+    position: absolute;
+    top: calc(50% - 0.5rem);
+    right: 1rem;
+  }
+
+  &__wrapper {
+    position: relative;
+  }
 }
