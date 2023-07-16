@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Search from './components/Search'
@@ -6,19 +6,8 @@ import DefinitionNotFound from './components/DefinitionNotFound'
 import Definition from './components/Definition'
 import DictionaryAPI from './api/dictionary'
 import type { DictionaryResult } from './api/dictionary'
-
 import response from './fixtures/dictionary_api_response.json'
-
-export enum Theme {
-  Light = 'light',
-  Dark = 'dark',
-}
-
-export enum Font {
-  SansSerif = 'sans-serif',
-  Serif = 'serif',
-  Mono = 'mono',
-}
+import { AppContext } from './state/context'
 
 enum View {
   Default,
@@ -29,14 +18,11 @@ enum View {
 export type SearchFn = (query: string) => void
 
 function App() {
-  const [theme, setTheme] = useState<Theme>(Theme.Light)
-  const [font, setFont] = useState<Font>(Font.SansSerif)
   const [view, setView] = useState<View>(View.Default)
   const [word, setWord] = useState<DictionaryResult>(response[0])
 
-  function toggleTheme() {
-    setTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)
-  }
+  const { state } = useContext(AppContext)
+  const { font, theme } = state
 
   async function search(query: string) {
     try {
@@ -59,16 +45,12 @@ function App() {
   useEffect(() => {
     const body = document.querySelector('body') as HTMLElement
     body.dataset.font = font
-  })
+  }, [font])
 
   return (
     <div className="App">
       <div className="container">
-        <Header
-          theme={theme}
-          toggleTheme={toggleTheme}
-          setFont={(font: Font) => setFont(font)}
-        />
+        <Header />
         <Search search={search} />
         {view === View.DefinitionNotFound && <DefinitionNotFound />}
         {view === View.ShowDefinition && <Definition definition={word} updateSearch={search} />}

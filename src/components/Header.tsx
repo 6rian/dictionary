@@ -1,21 +1,24 @@
-import { MouseEventHandler, MouseEvent, useRef } from 'react'
-import { Font, Theme } from '../App'
+import { MouseEvent, useRef, useContext } from 'react'
+import { Font, Theme } from '../types'
 import logo from '../assets/book_logo.svg'
 import toggleOff from '../assets/dark_mode_off.svg'
 import toggleOn from '../assets/dark_mode_on.svg'
 import caretDownIcon from '../assets/caret-down.svg'
+import { AppContext } from '../state/context'
+import { setFont, setTheme } from '../state/actions'
 
-function Header({ theme, toggleTheme, setFont }: {
-  theme: Theme
-  toggleTheme: MouseEventHandler
-  setFont: (font: Font) => void
-}) {
-
+function Header() {
+  const { state, dispatch } = useContext(AppContext)
+  const { theme } = state
   const fontSelectorRef = useRef<HTMLElement>(null)
+
+  function toggleTheme() {
+    dispatch(setTheme(theme === Theme.Light ? Theme.Dark : Theme.Light))
+  }
 
   function changeFont(e: MouseEvent<HTMLElement>) {
     const target = e.target as HTMLElement
-    setFont(target.dataset.font as Font)
+    dispatch(setFont(target.dataset.font as Font))
     if (fontSelectorRef.current) {
       const summaryTextEl = fontSelectorRef.current.querySelector('span') as HTMLSpanElement
       summaryTextEl.innerText = target.innerText
