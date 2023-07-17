@@ -102,6 +102,11 @@
       @include  screen-md {
         font-size: 1.25rem;
       }
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
     }
   }
 }
