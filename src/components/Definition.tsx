@@ -1,13 +1,9 @@
-import { DictionaryResult, Phonetic } from '../api/dictionary'
+import { DictionaryResult } from '../api/dictionary'
 import DefinitionHeading from './DefinitionHeading'
 import Meaning from './Meaning'
 import Sources from './Sources'
 import type { SearchFn } from '../types'
-
-function findPhoeneticWithAudio(phoenetics: Phonetic[]): Phonetic {
-  const p = phoenetics.find(ph => ph.audio !== '')
-  return p !== undefined ? p : phoenetics[0]
-}
+import { findPhoeneticWithAudio } from '../helpers'
 
 function Definition({
   definition,
