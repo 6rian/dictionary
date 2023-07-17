@@ -22,6 +22,17 @@
     @include screen-md {
       @include body-text('md');
     }
+
+    &::after {
+      content: "/";
+      padding-left: 1rem;
+    }
+
+    &:last-child {
+      &::after {
+        content: "";
+      }
+    }
   }
 
   a {
