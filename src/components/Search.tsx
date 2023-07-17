@@ -1,15 +1,15 @@
 import { ChangeEvent, FormEvent, useState, useRef, useContext } from 'react'
 import searchIcon from '../assets/search.svg'
-import { SearchFn } from '../App'
+import { SearchFn } from '../types'
 import { AppContext } from '../state/context'
 import { setSearchTerm } from '../state/actions'
 
 type SearchProps = {
-  search: SearchFn
+  updateSearch: SearchFn
   searchTerm: string | undefined
 }
 
-function Search({ search, searchTerm }: SearchProps) {
+function Search({ updateSearch, searchTerm }: SearchProps) {
   const { dispatch } = useContext(AppContext)
 
   const [error, setError] = useState<string>()
@@ -27,7 +27,7 @@ function Search({ search, searchTerm }: SearchProps) {
     }
 
     dispatch(setSearchTerm(searchTerm || ''))
-    search(searchTerm || '')
+    updateSearch(searchTerm || '')
   }
 
   function resetFieldError(e: ChangeEvent<HTMLInputElement>) {

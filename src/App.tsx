@@ -14,15 +14,13 @@ enum View {
   ShowDefinition,
 }
 
-export type SearchFn = (query: string) => void
-
 function App() {
   const [view, setView] = useState<View>(View.Default)
 
   const { state, dispatch } = useContext(AppContext)
   const { font, theme, searchTerm, definition } = state
 
-  async function search(query: string) {
+  async function updateSearch(query: string) {
     try {
       dispatch(setSearchTerm(query))
       const result = await DictionaryAPI.getWord(query)
@@ -32,7 +30,6 @@ function App() {
       if (err instanceof DictionaryAPI.NotFoundError) {
         setView(View.DefinitionNotFound)
       }
-      // TODO -- show generic error?
     }
   }
 
@@ -50,9 +47,9 @@ function App() {
     <div className="App">
       <div className="container">
         <Header />
-        <Search search={search} searchTerm={searchTerm} />
+        <Search updateSearch={updateSearch} searchTerm={searchTerm} />
         {view === View.DefinitionNotFound && <DefinitionNotFound />}
-        {view === View.ShowDefinition && definition && <Definition definition={definition} updateSearch={search} />}
+        {view === View.ShowDefinition && definition && <Definition definition={definition} updateSearch={updateSearch} />}
       </div>
       <Footer />
     </div>

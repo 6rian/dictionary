@@ -2,7 +2,7 @@ import { DictionaryResult, Phonetic } from '../api/dictionary'
 import DefinitionHeading from './DefinitionHeading'
 import Meaning from './Meaning'
 import Sources from './Sources'
-import type { SearchFn } from '../App'
+import type { SearchFn } from '../types'
 
 function findPhoeneticWithAudio(phoenetics: Phonetic[]): Phonetic {
   const p = phoenetics.find(ph => ph.audio !== '')
