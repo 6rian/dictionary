@@ -1,5 +1,6 @@
 import { DictionaryResult } from '../api/dictionary'
 import { Font, Theme } from '../types'
+import { prefersDarkTheme } from '../helpers'
 
 export interface AppState {
   font: Font
@@ -10,7 +11,7 @@ export interface AppState {
 
 export const initialAppState: AppState = {
   font: Font.SansSerif,
-  theme: Theme.Light,
+  theme: prefersDarkTheme() ? Theme.Dark : Theme.Light,
   searchTerm: '',
   definition: null,
 }
