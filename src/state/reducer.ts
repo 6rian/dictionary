@@ -14,6 +14,16 @@ export const appReducer = (state: AppState, action: AppAction): AppState => {
         ...state,
         theme: payload
       }
+    case AppActionKind.SetSearchTerm:
+      return {
+        ...state,
+        searchTerm: payload
+      }
+    case AppActionKind.SetDefinition:
+      return {
+        ...state,
+        definition: payload
+      }
     default:
       return state
   }

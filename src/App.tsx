@@ -5,9 +5,8 @@ import Search from './components/Search'
 import DefinitionNotFound from './components/DefinitionNotFound'
 import Definition from './components/Definition'
 import DictionaryAPI from './api/dictionary'
-import type { DictionaryResult } from './api/dictionary'
-import response from './fixtures/dictionary_api_response.json'
 import { AppContext } from './state/context'
+import { setDefinition, setSearchTerm } from './state/actions'
 
 enum View {
   Default,
@@ -19,15 +18,15 @@ export type SearchFn = (query: string) => void
 
 function App() {
   const [view, setView] = useState<View>(View.Default)
-  const [word, setWord] = useState<DictionaryResult>(response[0])
 
-  const { state } = useContext(AppContext)
-  const { font, theme } = state
+  const { state, dispatch } = useContext(AppContext)
+  const { font, theme, searchTerm, definition } = state
 
   async function search(query: string) {
     try {
+      dispatch(setSearchTerm(query))
       const result = await DictionaryAPI.getWord(query)
-      setWord(result)
+      dispatch(setDefinition(result))
       setView(View.ShowDefinition)
     } catch (err) {
       if (err instanceof DictionaryAPI.NotFoundError) {
@@ -51,9 +50,9 @@ function App() {
     <div className="App">
       <div className="container">
         <Header />
-        <Search search={search} />
+        <Search search={search} searchTerm={searchTerm} />
         {view === View.DefinitionNotFound && <DefinitionNotFound />}
-        {view === View.ShowDefinition && <Definition definition={word} updateSearch={search} />}
+        {view === View.ShowDefinition && definition && <Definition definition={definition} updateSearch={search} />}
       </div>
       <Footer />
     </div>

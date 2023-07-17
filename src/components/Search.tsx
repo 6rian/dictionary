@@ -1,28 +1,37 @@
-import { ChangeEvent, FormEvent, useState, useRef } from 'react'
+import { ChangeEvent, FormEvent, useState, useRef, useContext } from 'react'
 import searchIcon from '../assets/search.svg'
 import { SearchFn } from '../App'
+import { AppContext } from '../state/context'
+import { setSearchTerm } from '../state/actions'
 
 type SearchProps = {
   search: SearchFn
+  searchTerm: string | undefined
 }
 
-function Search({ search }: SearchProps) {
+function Search({ search, searchTerm }: SearchProps) {
+  const { dispatch } = useContext(AppContext)
+
   const [error, setError] = useState<string>()
   const searchRef = useRef<HTMLInputElement>(null)
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
 
-    if (searchRef.current?.value.trim() === '') {
+    const searchTerm = searchRef.current?.value.trim()
+
+    if (searchTerm === '') {
       setError('Whoops, can’t be empty...')
     } else {
       setError('')
     }
 
-    search(searchRef.current?.value.trim() || '')
+    dispatch(setSearchTerm(searchTerm))
+    search(searchTerm || '')
   }
 
   function resetFieldError(e: ChangeEvent<HTMLInputElement>) {
+    dispatch(setSearchTerm(e.target.value.trim()))
     if (e.target.value.trim() !== '') {
       setError('')
     }
@@ -37,6 +46,7 @@ function Search({ search }: SearchProps) {
           id="search"
           placeholder="Search for any word..."
           ref={searchRef}
+          value={searchTerm}
           onChange={resetFieldError}
           className={error ? `error` : ``}
         />
