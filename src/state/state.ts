@@ -4,7 +4,7 @@ import { Font, Theme } from '../types'
 export interface AppState {
   font: Font
   theme: Theme
-  searchTerm: string | undefined
+  searchTerm: string
   definition: DictionaryResult | null
 }
 

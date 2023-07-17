@@ -26,7 +26,7 @@ function Search({ search, searchTerm }: SearchProps) {
       setError('')
     }
 
-    dispatch(setSearchTerm(searchTerm))
+    dispatch(setSearchTerm(searchTerm || ''))
     search(searchTerm || '')
   }
 

@@ -20,7 +20,7 @@ export interface SetThemeAction {
 
 export interface SetSearchTermAction {
   type: AppActionKind.SetSearchTerm
-  payload: string | undefined
+  payload: string
 }
 
 export interface SetDefinition {
@@ -47,7 +47,7 @@ export const setTheme = (theme: Theme): SetThemeAction => ({
   payload: theme,
 })
 
-export const setSearchTerm = (searchTerm: string | undefined): SetSearchTermAction => ({
+export const setSearchTerm = (searchTerm: string): SetSearchTermAction => ({
   type: AppActionKind.SetSearchTerm,
   payload: searchTerm,
 })

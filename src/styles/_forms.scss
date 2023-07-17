@@ -28,11 +28,3 @@ input[type="search"] {
   }
 }
 
-input + p {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-
-  &.error {
-    color: var(--error-color);
-  }
-}
